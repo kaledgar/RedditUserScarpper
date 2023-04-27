@@ -10,8 +10,7 @@ praw
 Usage
 To use this script, simply import the RedditTopUsersInfo class from UsersInfo.py and create an instance of the class with the desired subreddit name and number of posts to scrape. Then, call the appropriate method to get the desired information.
 
-python
-Copy code
+'''
 from UsersInfo import RedditTopUsersInfo
 
 # create instance
@@ -28,6 +27,8 @@ rtui.get_users_post(username='example_user', number=10)
 
 # scrap celebrities' post info
 rtui.scrap_celebrities()
+'''
+
 Output
 The output of get_top_posts_info() is a pandas dataframe with 4 columns:
 
