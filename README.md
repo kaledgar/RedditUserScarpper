@@ -11,7 +11,7 @@ This is a Python script that uses the PRAW (Python Reddit API Wrapper) library t
 ## Usage
 To use this script, simply import the RedditTopUsersInfo class from UsersInfo.py and create an instance of the class with the desired subreddit name and number of posts to scrape. Then, call the appropriate method to get the desired information.
 
-```
+```python 
 from UsersInfo import RedditTopUsersInfo
 
 # create instance
