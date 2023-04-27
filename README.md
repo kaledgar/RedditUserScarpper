@@ -2,7 +2,7 @@
 Python program to request Top Authors on a given subreddit and plot connections between different subreddits.
 
 ## RedditTopUsersInfo.py
-This is a Python script that uses the PRAW (Python Reddit API Wrapper) library to gather information about top users on a specific subreddit. It returns a pandas dataframe with information based on top subreddit posts.
+This is a Python script that uses the PRAW (Python Reddit API Wrapper - https://praw.readthedocs.io/en/stable/index.html) library to gather information about top users on a specific subreddit. It returns a pandas dataframe with information based on top subreddit posts.
 
 ## Requirements
  - pandas
