@@ -7,19 +7,20 @@ import numpy as np
 def scrap_df_to_nx(scrap_df):
     return nx.from_pandas_edgelist(scrap_df, source='user_name', target='subreddit_name')
 
-def graph_visual(scrap_df, no_it=50, k_val=0.2, font_siz=15, name = 'Reddit connections'):
+def graph_visual(scrap_df, no_it=50, k_val=0.2, name = 'Reddit connections', labels_bool = True, font_siz=15):
     figure(figsize=(30, 30))
     g = scrap_df_to_nx(scrap_df)
-    gc = g.subgraph(sorted(nx.connected_components(g), key=len, reverse=True)[0])
+    gc = g.subgraph(sorted(nx.connected_components(g), key=l    en, reverse=True)[0])
     layout = nx.spring_layout(gc, k=k_val, iterations=no_it, scale=10)
-    nx.draw(gc, layout, node_color='lime', node_size=190, with_labels=True, font_size=font_siz, alpha=0.5)
+    nx.draw(gc, layout, node_color='lime', node_size=190, with_labels=labels_bool, font_size=font_siz, alpha=0.5)
     plt.title(name)
     plt.savefig(f'{g}_visual.png')
     plt.show()
     plt.close()
 
 
-def graph_distribution_info(G, name='Reddit connections degree info'):
+def graph_distribution_info(scrap_df, name='Reddit connections degree info'):
+    G = scrap_df_to_nx(scrap_df)
     degree_sequence = sorted((d for n, d in G.degree()), reverse=True)
     dmax = max(degree_sequence)
     davg = np.mean(degree_sequence)
