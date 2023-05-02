@@ -22,8 +22,8 @@ class RedditTopUsersInfo:
         self.subreddit_name = subreddit_name
         self.user_posts_count = user_posts_count
         self.subreddit_posts_count = subreddit_posts_count
-        self.top_posts_info_df = None
-        self.freq_authors = None
+        self.top_posts_info_df : pd.DataFrame
+        self.freq_authors : pd.DataFrame
 
     def get_top_posts_info(self):
         """
@@ -71,18 +71,18 @@ class RedditTopUsersInfo:
         return user_posts_df[["id", "score", "user_name", "subreddit_name"]]
 
     def scrap_celebrities(self):
-        usernames_list = self.get_top_users_info()
-        df_list = []
+        usernames : list = self.get_top_users_info()
+        celebrities : list
 
-        for author in usernames_list:
+        for author in usernames:
             try:
-                temp = self.get_users_post(author, self.user_posts_count)
-                print(temp)
-                df_list.append(temp)
+                users_post = self.get_users_post(author, self.user_posts_count)
+                print(users_post)
+                celebrities.append(users_post)
             except Forbidden:
                 print(f"{author} account deleted or banned")
 
-        df = pd.concat(df_list)
+        df = pd.concat(celebrities)
         print(df.info())
         print(df)
         return df
