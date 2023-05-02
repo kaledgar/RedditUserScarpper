@@ -72,7 +72,7 @@ class RedditTopUsersInfo:
 
     def scrap_celebrities(self):
         usernames : list = self.get_top_users_info()
-        celebrities : list
+        celebrities = list()
 
         for author in usernames:
             try:
