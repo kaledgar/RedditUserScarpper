@@ -1,6 +1,6 @@
 from .users_info import RedditTopUsersInfo
 
-from graph_visualization_functions import graph_visual
+from .graph_visualization_functions import graph_visual
 
 
 SUB_NAME = "Gaming"
