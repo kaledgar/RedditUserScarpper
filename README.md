@@ -8,6 +8,21 @@ This is a Python script that uses the PRAW (Python Reddit API Wrapper - https://
  - pandas
  - praw
 
+## Python virtual environment
+
+To spawn a Python virtual environment shell run:
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Then, to install the dependencies in the virtual environment run:
+
+```sh
+pip install --requirement requirements.txt
+```
+
 ## Usage
 To use this script, simply import the RedditTopUsersInfo class from UsersInfo.py and create an instance of the class with the desired subreddit name and number of posts to scrape. Then, call the appropriate method to get the desired information.
 
