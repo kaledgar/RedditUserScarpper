@@ -10,7 +10,7 @@ def scrap_df_to_nx(scrap_df):
     )
 
 
-def graph_visual(
+def visualize_network(
     scrap_df,
     no_it=50,
     k_val=0.2,
