@@ -1,9 +1,11 @@
 import argparse
-import sys
+import logging
 
 from .constants import DEFAULT_SUBREDDIT_NAME
 from .graph_visualization_functions import graph_distribution_info, visualize_network
 from .users_info import RedditTopUsersInfo
+
+logger = logging.getLogger(__name__)
 
 
 def parse_cli_arguments():
@@ -15,12 +17,14 @@ def parse_cli_arguments():
     parser.add_argument("-s", "--subreddit", default=DEFAULT_SUBREDDIT_NAME)
     parser.add_argument("-p", "--posts-count", default=100)
     parser.add_argument("-u", "--user-posts-count", default=10)
+    parser.add_argument("-v", "--verbose", action="store_true")
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_cli_arguments()
-    print(args)
+    if args.verbose:
+        logging.basicConfig(level=logging.INFO)
 
     rtui = RedditTopUsersInfo(
         args.subreddit,

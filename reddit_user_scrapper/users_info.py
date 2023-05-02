@@ -86,7 +86,10 @@ class RedditTopUsersInfo:
         usernames: list = self.get_top_users_info()
         celebrities = list()
 
-        for author in usernames:
+        logger.info(f"Scrapping {len(usernames)} users' data...")
+
+        for idx, author in enumerate(usernames):
+            logger.info(f"Scrapping user {idx} of {len(usernames)}")
             try:
                 users_post = self.get_users_post(author, self.user_posts_count)
                 # print(users_post)
