@@ -1,7 +1,8 @@
+import json
+
 import pandas as pd
 import praw
 from prawcore.exceptions import Forbidden
-import json
 
 CREDENTIALS = "UserCredentials.json"
 with open(CREDENTIALS, "r") as j:

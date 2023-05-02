@@ -1,7 +1,5 @@
-from .users_info import RedditTopUsersInfo
-
 from .graph_visualization_functions import graph_visual
-
+from .users_info import RedditTopUsersInfo
 
 SUB_NAME = "Gaming"
 rtui = RedditTopUsersInfo(SUB_NAME, subreddit_posts_count=100, user_posts_count=1)

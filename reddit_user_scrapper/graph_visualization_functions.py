@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import figure
 import networkx as nx
 import numpy as np
+from matplotlib.pyplot import figure
 
 
 def scrap_df_to_nx(scrap_df):
