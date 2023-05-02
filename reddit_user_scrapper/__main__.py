@@ -1,4 +1,4 @@
-from users_info import RedditTopUsersInfo
+from .users_info import RedditTopUsersInfo
 from graph_visualization_functions import graph_visual, graph_distribution_info
 
 
