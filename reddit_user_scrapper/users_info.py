@@ -18,10 +18,10 @@ reddit = praw.Reddit(
 
 
 class RedditTopUsersInfo:
-    def __init__(self, subreddit_name, no_subreddit_posts=100, no_user_posts=10):
+    def __init__(self, subreddit_name, subreddit_posts_count=100, user_posts_count=10):
         self.subreddit_name = subreddit_name
-        self.no_user_posts = no_user_posts
-        self.no_subreddit_posts = no_subreddit_posts
+        self.user_posts_count = user_posts_count
+        self.subreddit_posts_count = subreddit_posts_count
         self.top_posts_info_df = None
         self.freq_authors = None
 
@@ -33,7 +33,7 @@ class RedditTopUsersInfo:
         subreddit = reddit.subreddit(self.subreddit_name)
         post_info = [
             (subm.id, str(subm.author), int(subm.score), subm.subreddit)
-            for subm in subreddit.top(limit=self.no_subreddit_posts)
+            for subm in subreddit.top(limit=self.subreddit_posts_count)
         ]
         df = pd.DataFrame(post_info, columns=["id", "author", "score", "subreddit"])
         print(df)
@@ -76,7 +76,7 @@ class RedditTopUsersInfo:
 
         for author in usernames_list:
             try:
-                temp = self.get_users_post(author, self.no_user_posts)
+                temp = self.get_users_post(author, self.user_posts_count)
                 print(temp)
                 df_list.append(temp)
             except Forbidden:
