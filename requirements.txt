@@ -1,2 +1,4 @@
 pandas~=1.4.4
 praw~=7.7.0
+numpy~=1.21.5
+networkx~=2.8.4
