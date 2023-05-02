@@ -1,7 +1,11 @@
+import logging
+
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 from matplotlib.pyplot import figure
+
+logger = logging.getLogger(__name__)
 
 
 def scrap_df_to_nx(scrap_df):
