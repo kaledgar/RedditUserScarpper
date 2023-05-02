@@ -1,10 +1,8 @@
+from .graph_visualization_functions import visualize_network
 from .users_info import RedditTopUsersInfo
 
-from graph_visualization_functions import graph_visual
-
-
-sub_name = "Gaming"
-rtui = RedditTopUsersInfo(sub_name, no_subreddit_posts=100, no_user_posts=1)
+SUB_NAME = "Gaming"
+rtui = RedditTopUsersInfo(SUB_NAME, subreddit_posts_count=1000, user_posts_count=10)
 rtui_df = rtui.scrap_celebrities()
 
-graph_visual(rtui_df, no_it=250, k_val=0.95, labels_bool=False)
+visualize_network(rtui_df, no_it=250, k_val=0.95, labels_bool=False)
