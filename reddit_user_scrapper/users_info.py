@@ -1,10 +1,13 @@
 import json
+import logging
 
 import pandas as pd
 import praw
 from prawcore.exceptions import Forbidden
 
-CREDENTIALS_FILEPATH = "UserCredentials.json"
+from .constants import DEFAULT_CREDENTIALS_FILEPATH
+
+logger = logging.getLogger(__name__)
 
 
 class RedditTopUsersInfo:
@@ -13,7 +16,7 @@ class RedditTopUsersInfo:
         subreddit_name,
         subreddit_posts_count=100,
         user_posts_count=10,
-        credentials_filepath=CREDENTIALS_FILEPATH,
+        credentials_filepath=DEFAULT_CREDENTIALS_FILEPATH,
     ):
         self.subreddit_name = subreddit_name
         self.user_posts_count = user_posts_count
@@ -46,18 +49,17 @@ class RedditTopUsersInfo:
             for subm in subreddit.top(limit=self.subreddit_posts_count)
         ]
         df = pd.DataFrame(post_info, columns=["id", "author", "score", "subreddit"])
-        print(df)
+        logger.debug(f"Top posts dataframe:\n{df}")
         return df
 
-    def get_top_users_info(self, logs=True):
+    def get_top_users_info(self):
         self.top_posts_info_df = self.get_top_posts_info()
         self.freq_authors = self.top_posts_info_df.loc[
             self.top_posts_info_df["author"].ne("None"), "author"
         ].unique()
 
-        if logs:
-            print(f"Length of freq_authors = {len(self.freq_authors)}")
-            print(self.freq_authors)
+        # print(f"Length of freq_authors = {len(self.freq_authors)}")
+        # print(self.freq_authors)
 
         return self.freq_authors
 
@@ -84,15 +86,18 @@ class RedditTopUsersInfo:
         usernames: list = self.get_top_users_info()
         celebrities = list()
 
-        for author in usernames:
+        logger.info(f"Scrapping {len(usernames)} users' data...")
+
+        for idx, author in enumerate(usernames):
+            logger.info(f"Scrapping user {idx} of {len(usernames)}")
             try:
                 users_post = self.get_users_post(author, self.user_posts_count)
-                print(users_post)
+                # print(users_post)
                 celebrities.append(users_post)
             except Forbidden:
-                print(f"{author} account deleted or banned")
+                logger.error(f"{author} account deleted or banned")
 
         df = pd.concat(celebrities)
-        print(df.info())
-        print(df)
+        # print(df.info())
+        # print(df)
         return df
