@@ -5,11 +5,11 @@ Python program to request Top Authors on a given subreddit and plot connections 
 This is a Python script that uses the PRAW (Python Reddit API Wrapper - https://praw.readthedocs.io/en/stable/index.html) library to gather information about top users on a specific subreddit. It returns a pandas dataframe with information based on top subreddit posts.
 
 ## Dependencies:
--json: A module for working with JSON data.
--logging: A module for logging messages during program execution.
--pandas: A library for data manipulation and analysis.
--praw: A Python wrapper for the Reddit API.
--prawcore.exceptions.Forbidden: An exception raised when access to a resource is forbidden.
+- json: A module for working with JSON data.
+- logging: A module for logging messages during program execution.
+- pandas: A library for data manipulation and analysis.
+- praw: A Python wrapper for the Reddit API.
+- prawcore.exceptions.Forbidden: An exception raised when access to a resource is forbidden.
 - .constants: A module containing constant values for the application.
 
 ## Python virtual environment
