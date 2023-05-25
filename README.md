@@ -1,5 +1,8 @@
 # RedditUserScarpper
-Python program to request Top Authors on a given subreddit and plot connections between different subreddits.
+Python program to request Top Authors on a given subreddit and plot connections between different communities.
+
+![Graph with 360 nodes and 371 edges_visual](https://github.com/kkinastowski66/RedditUserScarpper/assets/101144906/ce8c75fa-f03b-4c9f-a98a-22ce60d1ecc0)
+
 
 ## RedditTopUsersInfo.py
 This is a Python script that uses the PRAW (Python Reddit API Wrapper - https://praw.readthedocs.io/en/stable/index.html) library to gather information about top users on a specific subreddit. It returns a pandas dataframe with information based on top subreddit posts.
